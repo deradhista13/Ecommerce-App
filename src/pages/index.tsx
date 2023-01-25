@@ -4,7 +4,34 @@ import { CardList } from "../components/Card";
 import Hero from "../components/Hero";
 import Layout from "../components/Layout";
 
+export interface ProductType {
+  id?: number;
+  product_name?: string;
+  product_image?: string;
+  description?: string;
+  qty?: number;
+  price?: number;
+}
+
 const LandingPage = () => {
+  const [datas, setDatas] = useState<ProductType[]>([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  function fetchData() {
+    axios
+      .get("http://baggioshop.site/products")
+      .then((data) => {
+        const result = data.data.data; // destructuring
+        setDatas(result);
+      })
+      .catch((error) => {
+        alert(error.toString());
+      });
+  }
+
   return (
     <Layout>
       <div className="flex flex-col my-5 mx-5">
@@ -14,10 +41,9 @@ const LandingPage = () => {
         <div className="my-3">
           <h3 className="font-bold m-3">Produk Toko Kami</h3>
           <div className="flex flex-row justify-center">
-            <CardList />
-            <CardList />
-            <CardList />
-            <CardList />
+            {datas.map((data) => (
+              <CardList key={data.id} name={data.product_name} image={data.product_image} deskrip={data.description} harga={data.price} />
+            ))}
           </div>
         </div>
       </div>
