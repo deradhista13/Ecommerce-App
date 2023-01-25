@@ -17,7 +17,7 @@ const Login = () => {
   function authLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     axios
-      .post("http://13.215.177.62/login", {
+      .post("https://baggioshop.site/login", {
         email: email,
         password: pass,
       })
