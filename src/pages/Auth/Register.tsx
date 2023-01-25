@@ -17,7 +17,7 @@ const Register = () => {
   function registerHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     axios
-      .post("http://13.215.177.62/register", {
+      .post("https://baggioshop.site/register", {
         name: name,
         username: username,
         email: email,
@@ -91,9 +91,9 @@ const Register = () => {
                 </label>
                 <input
                   type="text"
-                  id="email"
+                  id="username"
                   className="bg-white appearance-none border-2 border-[#D9D9D9] rounded-2xl w-full py-2 px-4 text-black leading-tight focus:outline-none focus:bg-white h-14"
-                  placeholder="(a-z & 0-9)"
+                  placeholder="username"
                   onChange={(e) => {
                     setUsername(e.target.value);
                   }}
