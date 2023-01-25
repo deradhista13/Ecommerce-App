@@ -1,12 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import LandingPage from "../pages";
+import AddDetail from "../pages/AddDetail";
 import AddProdukPage from "../pages/AddProdukPage";
 import Cart from "../pages/Cart";
 import CheckoutProduk from "../pages/CheckoutProduk";
 import DetailProduk from "../pages/DetailProduk";
 import HistoryPembelian from "../pages/HistoryPembelian";
 import Profile from "../pages/Profile";
+import Transaksi from "../pages/Transaksi";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,18 @@ const router = createBrowserRouter([
   {
     path: "/cart",
     element: <Cart />,
+  },
+  {
+    path: "/transaksi_jual",
+    element: <Transaksi />,
+  },
+  {
+    path: "/add_product_detail",
+    element: <AddDetail />,
+  },
+  {
+    path: "/transaksi_beli",
+    element: <HistoryPembelian />,
   },
 ]);
 

@@ -1,5 +1,5 @@
 <h1 align="center">E-commerce App</h1>
-<h3 align="center">Link Deploy : /</h3>
+<h3 align="center">Link Deploy : https://fe-ecommerce-app.vercel.app/</h3>
 
 ## About Project
 
@@ -29,7 +29,7 @@ This is a [React.js](https://reactjs.org/) project bootstrapped with [`create vi
 
 1. Clone repo:
 ```sh
-   git clone <Name Repo>
+   git clone https://github.com/deradhista13/FE-Ecommerce-App.git
    ```
 2. Install package
 ```sh
