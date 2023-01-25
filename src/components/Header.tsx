@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import avatar from "../assets/avatar.svg";
 import { FiRepeat, FiShoppingBag, FiShoppingCart, FiSearch } from "react-icons/fi";
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+  const Menus = ["Profile", "Logout"];
   return (
     <div>
       <header className="header sticky top-0 bg-white shadow-md flex items-center justify-between px-28 py-2">
@@ -30,8 +32,19 @@ const Header = () => {
           <a href="">
             <FiShoppingCart size={20} />
           </a>
-          <a href="">
-            <img src={avatar} className="rounded-full" width="30px" alt="" />
+          <a className="relative">
+            <img onClick={() => setOpen(!open)} src={avatar} className="rounded-full cursor-pointer" width="30px" alt="" />
+            {open && (
+              <div className="bg-white p-3 w-52 shadow-lg absolute -left-20 top-10">
+                <ul>
+                  {Menus.map((menu) => (
+                    <li onClick={() => setOpen(false)} className="p-2 text-lg cursor-pointer rounded hover:bg-blue-100" key={menu}>
+                      {menu}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </a>
         </div>
       </header>
