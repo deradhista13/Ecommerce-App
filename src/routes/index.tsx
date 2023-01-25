@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "../pages";
 import AddDetail from "../pages/AddDetail";
 import AddProdukPage from "../pages/AddProdukPage";
+import Login from "../pages/Auth/Login";
+import Register from "../pages/Auth/Register";
 import Cart from "../pages/Cart";
 import CheckoutProduk from "../pages/CheckoutProduk";
 import DetailProduk from "../pages/DetailProduk";
@@ -50,6 +52,14 @@ const router = createBrowserRouter([
   {
     path: "/transaksi_beli",
     element: <HistoryPembelian />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
 
