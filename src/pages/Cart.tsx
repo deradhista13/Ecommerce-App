@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../components/Button";
 import Layout from "../components/Layout";
 
 const Cart = () => {
@@ -135,6 +136,16 @@ const Cart = () => {
           <div className="font-md">500.000</div>
           <h4 className="font-bold text-lg">500.000</h4>
         </div>
+      </div>
+      <div className="flex flex-row m-10 mb-5 justify-end">
+        <Button
+          label="Kembali"
+          buttonSet="w-48 text-[#38E54D] btn-outline my-3 mr-10"
+        />
+        <Button
+          label="Checkout"
+          buttonSet="w-48 text-white bg-[#38E54D] border-none my-3 mr-10"
+        />
       </div>
     </Layout>
   );
