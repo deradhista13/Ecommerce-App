@@ -10,7 +10,7 @@ const AddDetail = () => {
   const [productName, setProductName] = useState<string>("");
   const [productImage, setProductImage] = useState<any>({});
   const [description, setDescription] = useState<string>("");
-  const [qty, setQty] = useState<number>(0);
+  const [stok, setStok] = useState<number>(0);
   const [price, setPrice] = useState<number>(0);
   const [importantInfo, setImportantInfo] = useState<string>("");
   const [cookie, setCookie] = useCookies();
@@ -25,12 +25,12 @@ const AddDetail = () => {
   function AddProduct(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("name", productName);
+    formData.append("product_name", productName);
     formData.append("product", productImage);
     formData.append("description", description);
-    formData.append("qty", qty.toString());
+    formData.append("stok", stok.toString());
     formData.append("price", price.toString());
-    formData.append("importantInfo", importantInfo);
+    formData.append("important_info", importantInfo);
     axios
       .post("https://baggioshop.site/products", formData, {
         headers: {
@@ -91,13 +91,13 @@ const AddDetail = () => {
             />
           </div>
           <div className="flex flex-col py-2">
-            <label className="font-semibold text-[#38E54D]">qty</label>
+            <label className="font-semibold text-[#38E54D]">Stok</label>
             <input
               className="rounded-lg bg-white mt-2 p-2 border-2 focus:outline-none text-black w-3/2"
               type="number"
               placeholder="0"
               onChange={(e) => {
-                setQty(e.target.valueAsNumber);
+                setStok(e.target.valueAsNumber);
               }}
             />
           </div>
@@ -108,7 +108,7 @@ const AddDetail = () => {
             <input
               className="rounded-lg bg-white mt-2 p-2 border-2 focus:outline-none text-black w-3/2"
               type="number"
-              placeholder="250.000"
+              placeholder="250000"
               onChange={(e) => {
                 setPrice(e.target.valueAsNumber);
               }}
