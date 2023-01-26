@@ -4,15 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import barang from "../assets/barang.png";
 import Layout from "../components/Layout";
 
-export interface ProductType {
-  id?: number;
-  product_name?: string;
-  product_image?: string;
-  description?: string;
-  qty?: number;
-  price?: number;
-  important_info?: string;
-}
+import { ProductType } from "../utils/Type";
 
 const DetailProduk = () => {
   const { id_product } = useParams();

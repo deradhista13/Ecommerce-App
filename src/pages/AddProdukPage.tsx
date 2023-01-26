@@ -1,20 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import Layout from "../components/Layout";
-
-export interface ProductType {
-  id?: number;
-  product_name?: string;
-  product_image?: string;
-  description?: string;
-  qty?: number;
-  price?: number;
-  important_info?: string;
-  onClick?: () => void;
-}
+import { ProductType } from "../utils/Type";
 
 const AddProdukPage = () => {
   const [product, setProduct] = useState<ProductType[]>([]);

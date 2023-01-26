@@ -6,14 +6,7 @@ import { CardList } from "../components/Card";
 import Hero from "../components/Hero";
 import Layout from "../components/Layout";
 
-export interface ProductType {
-  id?: number;
-  product_name?: string;
-  product_image?: string;
-  description?: string;
-  qty?: number;
-  price?: number;
-}
+import { ProductType } from "../utils/Type";
 
 const LandingPage = () => {
   const [datas, setDatas] = useState<ProductType[]>([]);
