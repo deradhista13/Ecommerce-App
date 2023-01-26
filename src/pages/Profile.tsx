@@ -12,7 +12,7 @@ export interface ProfileTypes {
   name?: string;
   email?: string;
   username?: string;
-  photo?: any;
+  avatar?: any;
   date_of_birth?: string;
   phone_number?: string;
   password?: string;
@@ -27,24 +27,24 @@ const ProfilePage = () => {
   const [userName, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [photo, setPhoto] = useState<string>("");
+  const [avatar, setAvatar] = useState<any>({});
   const navigate = useNavigate();
 
-  async function myProfileHandler() {
+  async function profilHandler() {
     await axios
-      .get("http://baggioshops.site/users/profile", {
+      .get(`https://baggioshop.site/users/profile`, {
         headers: {
           Authorization: `Bearer ${cookie.token}`,
         },
       })
       .then((res) => {
-        const { name, email, username, photo, date_of_birth, phone_number } =
+        const { name, email, username, avatar, date_of_birth, phone_number } =
           res.data.data;
         setProfileData(res.data.data);
         setFullName(name);
         setEmail(email);
         setUserName(username);
-        setPhoto(photo);
+        setAvatar(avatar);
         setDateOfBirth(date_of_birth);
         setPhoneNumber(phone_number);
       })
@@ -52,7 +52,7 @@ const ProfilePage = () => {
   }
 
   useEffect(() => {
-    myProfileHandler();
+    profilHandler();
   }, []);
 
   function editProfile() {
@@ -63,7 +63,7 @@ const ProfilePage = () => {
           name: fullName,
           email: email,
           username: userName,
-          photo: photo,
+          avatar: avatar,
           date_of_birth: dateOfBirth,
           phone_number: phoneNumber,
           password: password,
@@ -83,7 +83,7 @@ const ProfilePage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        myProfileHandler();
+        profilHandler();
       })
       .catch((err) => {
         Swal.fire({
@@ -160,8 +160,8 @@ const ProfilePage = () => {
                   <div className="w-[150px] h-[150px] mx-auto mt-16 rounded-full bg-white border-none">
                     <img
                       src={
-                        profileData.photo
-                          ? profileData.photo
+                        profileData.avatar
+                          ? profileData.avatar
                           : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
                       }
                       className="rounded-full"
@@ -176,7 +176,7 @@ const ProfilePage = () => {
                   </div>
                   <div className="mx-auto my-5 flex justify-center">
                     <p className="text-md text-[38E54D]">
-                      @{profileData.username}
+                      {profileData.username}
                     </p>
                   </div>
                 </div>
@@ -273,8 +273,8 @@ const ProfilePage = () => {
                     if (!e.currentTarget.files) {
                       return;
                     }
-                    setPhoto(URL.createObjectURL(e.currentTarget.files[0]));
-                    handleChange(e.currentTarget.files[0], "photo");
+                    setAvatar(e.currentTarget.files[0]);
+                    handleChange(e.currentTarget.files[0], "avatar");
                   }}
                 />
               </div>
