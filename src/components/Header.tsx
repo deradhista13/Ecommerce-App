@@ -73,15 +73,20 @@ const Header = () => {
         </h1>
 
         <div className="w-fit flex justify-end items-center gap-10">
-          <Link to="/transaksi_beli">
-            <FiRepeat size={20} />
-          </Link>
-          <Link to="/add_product">
-            <FiShoppingBag size={20} />
-          </Link>
-          <Link to="/cart">
-            <FiShoppingCart size={20} />
-          </Link>
+          {cookie.token ? (
+            <>
+              <Link to="/transaksi_beli">
+                <FiRepeat size={20} />
+              </Link>
+              <Link to="/add_product">
+                <FiShoppingBag size={20} />
+              </Link>
+              <Link to="/cart">
+                <FiShoppingCart size={20} />
+              </Link>
+            </>
+          ) : null}
+
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <div className="flex items-center">
