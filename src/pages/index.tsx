@@ -71,7 +71,7 @@ const LandingPage = () => {
         </div>
         <div className="my-3">
           <h3 className="font-bold m-3">Produk Toko Kami</h3>
-          <div className="flex flex-row justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 xl:grid-cols-4 xl:gap-3 m-3">
             {datas.slice(0, 8).map((data) => (
               <CardList
                 key={data.id}
