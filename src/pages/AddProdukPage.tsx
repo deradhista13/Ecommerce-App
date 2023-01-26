@@ -12,6 +12,7 @@ export interface ProductType {
   description?: string;
   qty?: number;
   price?: number;
+  important_info?: string;
   onClick?: () => void;
 }
 

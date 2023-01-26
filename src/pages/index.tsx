@@ -72,14 +72,14 @@ const LandingPage = () => {
         <div className="my-3">
           <h3 className="font-bold m-3">Produk Toko Kami</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 xl:grid-cols-4 xl:gap-3 m-3">
-            {datas.slice(0, 8).map((data) => (
+            {datas.map((data) => (
               <CardList
                 key={data.id}
                 id={data.id}
-                name={data.product_name}
-                image={data.product_image}
-                deskrip={data.description?.substring(0, 20) + "..."}
-                harga={data.price}
+                product_name={data.product_name}
+                product_image={data.product_image}
+                description={data.description?.substring(0, 20) + "..."}
+                price={data.price}
                 onClickCart={() => handlerCart(data)}
               />
             ))}
