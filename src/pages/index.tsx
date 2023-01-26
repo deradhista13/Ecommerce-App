@@ -34,7 +34,7 @@ const LandingPage = () => {
 
   function fetchData() {
     axios
-      .get("http://baggioshop.site/products")
+      .get("https://baggioshop.site/products")
       .then((data) => {
         const result = data.data.data;
         setDatas(result);
@@ -73,7 +73,15 @@ const LandingPage = () => {
           <h3 className="font-bold m-3">Produk Toko Kami</h3>
           <div className="flex flex-row justify-center">
             {datas.slice(0, 8).map((data) => (
-              <CardList key={data.id} id={data.id} name={data.product_name} image={data.product_image} deskrip={data.description?.substring(0, 20) + "..."} harga={data.price} onClickCart={() => handlerCart(data)} />
+              <CardList
+                key={data.id}
+                id={data.id}
+                name={data.product_name}
+                image={data.product_image}
+                deskrip={data.description?.substring(0, 20) + "..."}
+                harga={data.price}
+                onClickCart={() => handlerCart(data)}
+              />
             ))}
           </div>
         </div>
