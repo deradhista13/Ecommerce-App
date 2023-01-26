@@ -1,20 +1,75 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import Button from "../components/Button";
 import Layout from "../components/Layout";
 
 const AddDetail = () => {
+  const [productName, setProductName] = useState<string>("");
+  const [productImage, setProductImage] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [qty, setQty] = useState<number>();
+  const [price, setPrice] = useState<number>();
+  const [importantInfo, setImportantInfo] = useState<string>("");
+  const [cookie, setCookie] = useCookies();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!cookie.token) {
+      navigate("/add_product_detail");
+    }
+  }, [cookie.token]);
+
+  function AddProduct(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    axios
+      .post("https://baggioshop.site/products", {
+        name: productName,
+        image: productImage,
+        description: description,
+        qty: qty,
+        price: price,
+        importantInfo: importantInfo,
+      })
+
+      .then((res) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          text: "Berhasil Menambahkan Product",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/add_product_detail");
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Gagal Menambahakan Product!",
+        });
+      });
+  }
   return (
     <Layout>
       <h3 className="m-10 ml-10 font-bold text-lg">Tambah Product Baru</h3>
-      <form className="flex flex-row m-5 justify-center">
+      <form
+        className="flex flex-row m-5 justify-center"
+        onSubmit={(e) => AddProduct(e)}
+      >
         <div className="mx-10">
           <div className="flex flex-col py-2">
             <label className="font-semibold text-[#38E54D]">
-              Upload Foto Profil
+              Upload Foto Product
             </label>
             <input
               type="file"
               className="file-input file-input-bordered file-input-[#38E54D]  w-full max-w-md"
+              onChange={(e) => {
+                setProductImage(e.target.value);
+              }}
             />
           </div>
           <div className="flex flex-col py-2">
@@ -23,14 +78,20 @@ const AddDetail = () => {
               className="rounded-lg bg-white mt-2 p-2 border-2 focus:outline-none text-black w-3/2"
               type="text"
               placeholder="Nama Product"
+              onChange={(e) => {
+                setProductName(e.target.value);
+              }}
             />
           </div>
           <div className="flex flex-col py-2">
-            <label className="font-semibold text-[#38E54D]">Stok</label>
+            <label className="font-semibold text-[#38E54D]">qty</label>
             <input
               className="rounded-lg bg-white mt-2 p-2 border-2 focus:outline-none text-black w-3/2"
               type="number"
               placeholder="0"
+              onChange={(e) => {
+                setQty(e.target.valueAsNumber);
+              }}
             />
           </div>
           <div className="flex flex-col py-2">
@@ -41,6 +102,9 @@ const AddDetail = () => {
               className="rounded-lg bg-white mt-2 p-2 border-2 focus:outline-none text-black w-3/2"
               type="number"
               placeholder="250.000"
+              onChange={(e) => {
+                setPrice(e.target.valueAsNumber);
+              }}
             />
           </div>
         </div>
@@ -52,6 +116,9 @@ const AddDetail = () => {
             <textarea
               className="rounded-lg bg-white mt-2 p-2 border-2 focus:outline-none text-black w-3/2"
               placeholder="Deskripsi product"
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
             />
           </div>
           <div className="flex flex-col py-2">
@@ -61,14 +128,20 @@ const AddDetail = () => {
             <textarea
               className="rounded-lg bg-white mt-2 p-2 border-2 focus:outline-none text-black w-3/2"
               placeholder="informasi product"
+              onChange={(e) => {
+                setImportantInfo(e.target.value);
+              }}
             />
           </div>
           <div className="flex flex-row">
+            <Link to="/add_product">
+              <Button
+                label="Kembali"
+                buttonSet="w-48 text-[#38E54D] btn-outline my-3 mr-10"
+              />
+            </Link>
             <Button
-              label="Kembali"
-              buttonSet="w-48 text-[#38E54D] btn-outline my-3 mr-10"
-            />
-            <Button
+              type="submit"
               label="Tambah Product"
               buttonSet="w-48 text-white bg-[#38E54D] border-none my-3 mr-10"
             />
