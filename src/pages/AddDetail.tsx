@@ -8,10 +8,10 @@ import Layout from "../components/Layout";
 
 const AddDetail = () => {
   const [productName, setProductName] = useState<string>("");
-  const [productImage, setProductImage] = useState<string>("");
+  const [productImage, setProductImage] = useState<any>({});
   const [description, setDescription] = useState<string>("");
-  const [qty, setQty] = useState<number>();
-  const [price, setPrice] = useState<number>();
+  const [qty, setQty] = useState<number>(0);
+  const [price, setPrice] = useState<number>(0);
   const [importantInfo, setImportantInfo] = useState<string>("");
   const [cookie, setCookie] = useCookies();
   const navigate = useNavigate();
@@ -24,14 +24,18 @@ const AddDetail = () => {
 
   function AddProduct(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", productName);
+    formData.append("product", productImage);
+    formData.append("description", description);
+    formData.append("qty", qty.toString());
+    formData.append("price", price.toString());
+    formData.append("importantInfo", importantInfo);
     axios
-      .post("https://baggioshop.site/products", {
-        name: productName,
-        image: productImage,
-        description: description,
-        qty: qty,
-        price: price,
-        importantInfo: importantInfo,
+      .post("https://baggioshop.site/products", formData, {
+        headers: {
+          Authorization: `Bearer ${cookie.token}`,
+        },
       })
 
       .then((res) => {
@@ -68,7 +72,10 @@ const AddDetail = () => {
               type="file"
               className="file-input file-input-bordered file-input-[#38E54D]  w-full max-w-md"
               onChange={(e) => {
-                setProductImage(e.target.value);
+                if (!e.currentTarget.files) {
+                  return;
+                }
+                setProductImage(e.currentTarget.files[0]);
               }}
             />
           </div>
