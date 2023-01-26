@@ -1,17 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Layout from "../components/Layout";
 
-export interface ProductType {
-  id?: number;
-  product_name?: string;
-  product_image?: string;
-  description?: string;
-  qty?: number;
-  price?: number;
-  onClick?: () => void;
-}
+import { ProductType } from "../utils/Type";
 
 const Cart = () => {
   const [product, setProduct] = useState<ProductType[]>([]);
