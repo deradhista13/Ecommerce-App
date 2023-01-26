@@ -10,7 +10,6 @@ interface CardProps {
   qty?: number;
   price?: number;
   onClickCart?: () => void;
-  onClick?: () => void;
   navigate?: any;
 }
 
@@ -20,7 +19,7 @@ export const CardList: FC<CardProps> = ({
   product_image,
   description,
   price,
-  onClick,
+  onClickCart,
 }) => {
   const navigate = useNavigate();
 
@@ -30,7 +29,7 @@ export const CardList: FC<CardProps> = ({
 
   return (
     <div className="card w-72 bg-base-100 shadow-xl mx-2">
-      <figure className="mt-5 mx-5">
+      <figure className="mt-5 mx-5" onClick={() => onClickDetail()}>
         <img src={`${product_image}`} alt="product" className="rounded-lg" />
       </figure>
       <div className="card-body">
@@ -46,7 +45,7 @@ export const CardList: FC<CardProps> = ({
           <Button
             label="add to cart"
             buttonSet="btn-sm w-32 text-[#38E54D] btn-outline"
-            onClick={() => navigate("/checkout")}
+            onClick={onClickCart}
           />
         </div>
       </div>
