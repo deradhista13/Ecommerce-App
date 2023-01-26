@@ -42,7 +42,7 @@ const LandingPage = () => {
           <h3 className="font-bold m-3">Produk Toko Kami</h3>
           <div className="flex flex-row justify-center">
             {datas.map((data) => (
-              <CardList key={data.id} name={data.product_name} image={data.product_image} deskrip={data.description} harga={data.price} />
+              <CardList key={data.id} id={data.id} name={data.product_name} image={data.product_image} deskrip={data.description} harga={data.price} />
             ))}
           </div>
         </div>
