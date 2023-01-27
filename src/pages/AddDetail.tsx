@@ -5,8 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Button from "../components/Button";
 import Layout from "../components/Layout";
+import { useTitle } from "../utils/UseTitle";
 
 const AddDetail = () => {
+  useTitle("BaggioShop - Tambah Product Baru");
   const [productName, setProductName] = useState<string>("");
   const [productImage, setProductImage] = useState<any>({});
   const [description, setDescription] = useState<string>("");

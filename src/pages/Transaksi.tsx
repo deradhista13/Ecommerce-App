@@ -1,7 +1,10 @@
 import React from "react";
 import Layout from "../components/Layout";
+import { useTitle } from "../utils/UseTitle";
 
 const Transaksi = () => {
+  useTitle("BaggioShop - HIstory Transaksi");
+
   return (
     <Layout>
       <h3 className="m-10 ml-10 font-bold text-lg">

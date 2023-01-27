@@ -4,8 +4,10 @@ import Button from "../components/Button";
 import Layout from "../components/Layout";
 
 import { ProductType } from "../utils/Type";
+import { useTitle } from "../utils/UseTitle";
 
 const Cart = () => {
+  useTitle("BaggioShop - Shopping Cart");
   const [product, setProduct] = useState<ProductType[]>([]);
   const [qty, setQty] = useState(1);
   const navigate = useNavigate();

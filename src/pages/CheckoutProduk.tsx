@@ -1,8 +1,10 @@
 import React from "react";
 import CardCheckout from "../components/CardCheckout";
 import Layout from "../components/Layout";
+import { useTitle } from "../utils/UseTitle";
 
 const CheckoutProduk = () => {
+  useTitle("BaggioShop - Checkout");
   return (
     <Layout>
       <div className="w-auto p-20 m-20 bg-white ">
