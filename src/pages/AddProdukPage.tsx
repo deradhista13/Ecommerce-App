@@ -5,8 +5,10 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import Layout from "../components/Layout";
 import { ProductType } from "../utils/Type";
+import { useTitle } from "../utils/UseTitle";
 
 const AddProdukPage = () => {
+  useTitle("BaggioShop - Tambah Product");
   const [product, setProduct] = useState<ProductType[]>([]);
   const { id } = useParams();
   const [productName, setProductName] = useState<string>("");

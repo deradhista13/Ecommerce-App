@@ -7,8 +7,10 @@ import Hero from "../components/Hero";
 import Layout from "../components/Layout";
 
 import { ProductType } from "../utils/Type";
+import { useTitle } from "../utils/UseTitle";
 
 const LandingPage = () => {
+  useTitle("BaggioShop - Belanja Online");
   const [datas, setDatas] = useState<ProductType[]>([]);
   // const [totalPage, setTotalPage] = useState<number>(1)
   // const [page,setPage] = useState<number>(1)

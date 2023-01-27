@@ -5,8 +5,10 @@ import barang from "../assets/barang.png";
 import Layout from "../components/Layout";
 
 import { ProductType } from "../utils/Type";
+import { useTitle } from "../utils/UseTitle";
 
 const DetailProduk = () => {
+  useTitle("BaggioShop - Detail Product");
   const { id_product } = useParams();
   const [data, setData] = useState<ProductType>({});
   const [qty, setQty] = useState(1);

@@ -6,6 +6,7 @@ import axios from "axios";
 
 import { Modals } from "../components/Modals";
 import Layout from "../components/Layout";
+import { useTitle } from "../utils/UseTitle";
 
 export interface ProfileTypes {
   id?: number;
@@ -19,6 +20,7 @@ export interface ProfileTypes {
 }
 
 const ProfilePage = () => {
+  useTitle("BaggioShop - ProfilPage");
   const [cookie, setCookie, removeCookie] = useCookies<string>([]);
   const [profileData, setProfileData] = useState<ProfileTypes>({});
   const [dateOfBirth, setDateOfBirth] = useState<string>("");
