@@ -3,7 +3,7 @@
 
 ## About Project
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ullam soluta ea, minima quos asperiores illum modi accusantium sequi, officia inventore, sunt libero? Nihil assumenda eos et suscipit non, ipsa officia! Culpa necessitatibus illum natus qui vitae dolor aut ullam!
+Aplikasi Jual beli barang secara online dengan sisem pembayaran yang juga online
 
 * Group 1 Project 1: Social Media Apps Project
 
@@ -29,7 +29,7 @@ This is a [React.js](https://reactjs.org/) project bootstrapped with [`create vi
 
 1. Clone repo:
 ```sh
-   git clone https://github.com/deradhista13/FE-Ecommerce-App.git
+   git clone https://github.com/deradhista13/Ecommerce-App.git
    ```
 2. Install package
 ```sh
